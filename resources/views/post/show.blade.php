@@ -10,6 +10,14 @@
             <h2>{{$user->name}}</h2>
             <p> {{$post->caption}}</p>
         </div>
-    </div>
+    </div> 
+
+    <form action=""
+        method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger btn-block">Delete</button>
+    </form>
+
 </div>
 @endsection

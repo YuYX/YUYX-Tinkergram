@@ -46,7 +46,7 @@ class ProfileController extends Controller
        }
        // Now, save it all into the database
        $updated = $profile->save();
-       if ($updated) {
+       if ($updated) { 
            return redirect('/profile');
        }
     }
@@ -55,8 +55,7 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         $profile = Profile::where('user_id', $user->id)->first();
-        $posts = Post::where('user_id',
-        $user->id)->orderBy('created_at', 'desc')->get();
+        $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
         $numPosts = Post::where('user_id',$user->id)->count();
         return view('profile', [
             'user' => Auth::user(),
@@ -103,8 +102,6 @@ class ProfileController extends Controller
 
         if($saved){
             return redirect('/profile');
-        }else{
-            echo '<script>alert("Cannot save profile image!")</script>';
         }
-    }
+    } 
 }

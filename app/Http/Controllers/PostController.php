@@ -82,8 +82,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
-    {
-        //
+    {  
+        return view ('post.edit',  compact('post'));
     }
 
     /**
@@ -93,9 +93,23 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $postId)
     {
-        //
+        $request->validate([
+            'caption' => 'required',
+            'postpic' => ['required', 'image']
+        ]);
+
+        $post = Post::find($postId);
+        if(!empty($post)){
+            $post->caption = request('caption');
+            $imagePath = request('postpic')->store('uploads', 'public'); 
+            $post->image = $imagePath;
+            $updated  = $post->update();
+            if($updated){
+                return redirect('/profile')->with('success', 'Post has been updated successfully!');
+            } 
+        }
     }
 
     /**
@@ -104,8 +118,11 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($postId)
     {
-        //
+        $post = Post::where('id', $postId)->first();
+        $post->delete();
+
+        return redirect('/profile');
     }
 }
