@@ -18,6 +18,11 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="content">Content</label>
+                        <input class="form-control" type="text" name="content" id="content">
+                    </div>
+
+                    <div class="form-group row">
                         <button type="submit" class="btn btn-primary">Post!</button>
                     </div>
                 </form>

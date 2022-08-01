@@ -9,6 +9,7 @@
         <div class="col-4">
             <h2>{{$user->name}}</h2>
             <p> {{$post->caption}}</p>
+            <p> {{$post->content}}</p>
         </div>
     </div> 
 

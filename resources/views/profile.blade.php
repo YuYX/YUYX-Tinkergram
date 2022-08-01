@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-3"> 
-            <div class="card" > 
-                <img class="rounded card-img-top"  
-                src="/storage/{{ $profile->image }}" alt=""> 
-                <div class="card-image-overlay  mx-auto">
-                    <img class="rounded-circle mx-auto" width="75" height="75" 
+            <div class="card cardeffect" style="background-color:beige;"> 
+                <img class="rounded  card-img-top mb-5"  
+                src="/storage/{{ $profile->back_image }}" alt=""> 
+                <div class="mx-auto" style="position:absolute; left:80px; top: 140px;">
+                    <img class="rounded-circle mx-auto" width="100" height="100" 
                     src="/storage/{{ $profile->image }}" alt=""> 
                 </div>
                 <div class="card-body" style="text-align: center">
@@ -29,19 +29,28 @@
                     src="/storage/{{ $profile->image }}" alt="">  
                 </div>
                 <div class="card col-md-11">
-                    <div class="card-header">Start a post</div> 
+                    <div class="card-header"> 
+                        <a class="nav-link" href="{{ route('post.create')}}">Start a post</a>
+                    </div> 
                 </div> 
             </div>
 
             @foreach ($posts as $post) 
-            <div class="card mb-2">
+            <div class="card mb-3" style="background-color:lightcyan">
                 <div class="mb-5 row pt-2">
-                <h5>{{ $post->caption }}</h5>
-                <hr class="solid">
-                <a href="/post/{{$post->id}}">
-                    <img src="/storage/{{$post->image}}" class="w-100">
-                </a>
-                </div>
+                    <h5>{{ $post->caption }}</h5>
+                    <h6>{{ $post->content }}</h6>
+
+                    <div class="pt-3"> 
+                        <a href="{{ route('post.edit', $post->id) }}">Edit</a>
+                        <a href="{{ route('post.destroy', $post->id) }}">Delete</a> 
+                    </div>
+
+                    <hr class="solid" style="margin-left:20px; width:95%;">
+                    <a href="/post/{{$post->id}}">
+                        <img src="/storage/{{$post->image}}" class="w-100">
+                    </a>
+                </div>  
             </div>
             @endforeach
         </div>

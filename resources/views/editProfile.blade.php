@@ -18,6 +18,11 @@
                         <label for="profilepic">Profile picture</label>
                         <input type="file" name="profilepic" id="profilepic">
                     </div>
+                    
+                    <div class="form-group row">
+                        <label for="backpic">Background picture</label>
+                        <input type="file" name="backpic" id="backpic">
+                    </div>
 
                     <div class="form-group row">
                         <button type="submit" class="btn btn-primary">Update profile</button>

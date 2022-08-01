@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- css file -->
+    <link rel="stylesheet" type="text/css" href="{{'resource/css/app.css'}}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -61,10 +64,10 @@
                             </li>  
                             @endif 
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link" 
                                 href="">Delete post</a>
-                            </li> 
+                            </li>  --}}
                             
                             <li class="nav-item">
                                 <a class="nav-link" 

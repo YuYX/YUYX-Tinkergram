@@ -25,6 +25,7 @@ class ProfileController extends Controller
        $data = request()->validate([
            'description' => 'required',
            'profilepic' => 'image',
+           'backpic' => 'image',
        ]);
        // Load the existing profile
        $user = Auth::user();
@@ -44,6 +45,12 @@ class ProfileController extends Controller
            $imagePath = request('profilepic')->store('uploads', 'public');
            $profile->image = $imagePath;
        }
+
+       if (request()->has('backpic')) {
+            $backImagePath = request('backpic')->store('uploads', 'public');
+            $profile->back_image = $backImagePath;
+        }
+
        // Now, save it all into the database
        $updated = $profile->save();
        if ($updated) { 
@@ -88,16 +95,19 @@ class ProfileController extends Controller
     {
         $data = request()->validate([
             'description' => 'required',
-            'profilepic' => ['required', 'image']
+            'profilepic' => ['required', 'image'],
+            'backpic' => ['required', 'image'],
         ]);
 
         $imagePath = request('profilepic')->store('uploads', 'public');
+        $backImagePath = request('backpic')->store('uploads', 'public');
 
         $user = Auth::user();
         $profile = new Profile();
         $profile->user_id = $user->id;
         $profile->description = request('description');
         $profile->image = $imagePath;
+        $profile->back_image = $backImagePath;
         $saved = $profile->save();
 
         if($saved){

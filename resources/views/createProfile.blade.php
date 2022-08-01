@@ -18,6 +18,11 @@
                     </div>
 
                     <div class="form-group row">
+                        <label for="backpic">Background picture</label>
+                        <input type="file" name="backpic" id="backpic">
+                    </div>
+
+                    <div class="form-group row">
                         <button type="submit" class="btn btn-primary">Create profile</button>
                     </div>
                 </form>

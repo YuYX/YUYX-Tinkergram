@@ -37,8 +37,9 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = request()->validate([
-            'caption' => 'required',
-            'postpic' => ['required', 'image']
+            'caption' => 'required', 
+            'content' => 'required',
+            'postpic' => ['required', 'image'], 
         ]);
 
         $user = AUth::user();
@@ -47,6 +48,7 @@ class PostController extends Controller
 
         $post->user_id = $user->id;
         $post->caption = request('caption');
+        $post->content = request('content');
         $post->image = $imagePath;
         $saved = $post->save();
 
@@ -97,12 +99,14 @@ class PostController extends Controller
     {
         $request->validate([
             'caption' => 'required',
+            'content' => 'required',
             'postpic' => ['required', 'image']
         ]);
 
         $post = Post::find($postId);
         if(!empty($post)){
             $post->caption = request('caption');
+            $post->content = request('content');
             $imagePath = request('postpic')->store('uploads', 'public'); 
             $post->image = $imagePath;
             $updated  = $post->update();

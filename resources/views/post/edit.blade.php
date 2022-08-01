@@ -14,14 +14,20 @@
                     @method('PUT')
                     <div class="form-group row">
                         <label for="postpic">Choose Image</label>
-                        <input type="file" name="postpic" id="postpic" 
-                        value="{{ $post->image }}">
+                        <input type="file" name="postpic" id="postpic">
+                        {{-- <label>Old File:{{$post->image}}</label> --}}
                     </div>
 
                     <div class="form-group row">
                         <label for="caption">Caption</label>
                         <input class="form-control" type="text" name="caption" id="caption" 
                         value="{{ $post->caption }}">
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="content">Caption</label>
+                        <input class="form-control" type="text" name="content" id="content" 
+                        value="{{ $post->content }}">
                     </div>
 
                     <div class="form-group row">
