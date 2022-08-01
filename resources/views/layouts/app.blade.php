@@ -54,10 +54,12 @@
                                 href="{{ route('post.create')}}">Create post</a>
                             </li>   
                             
+                            @if(isset($post))
                             <li class="nav-item">
                                 <a class="nav-link" 
                                 href="{{ route('post.edit', $post)}}">Edit post</a>
-                            </li>   
+                            </li>  
+                            @endif 
 
                             <li class="nav-item">
                                 <a class="nav-link" 
